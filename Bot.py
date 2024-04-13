@@ -10,7 +10,7 @@ student_codes = {
     "20200218": "Torres Espinoza Alejandro Paul",
     # Agrega aquí todos los códigos y nombres de estudiantes que necesites
 }
-
+# Agrega aquí todos los códigos y cursos de estudiantes que necesites
 # Diccionario que mapea los códigos de los estudiantes a sus cursos y salones
 student_courses = {
      "19200171": {
@@ -38,13 +38,14 @@ student_courses = {
         "Sábado": [("SISTEMAS DISTRIBUIDOS 3.0", "Salón 207", "9:00 AM", "11:00 AM")]
     },
     # Agrega aquí todos los códigos y cursos de estudiantes que necesites
+    # Agrega aquí todos los códigos y cursos de estudiantes que necesites
 }
 
 student_code = None  # Variable global para guardar el código del estudiante
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, 'Buenos Días, soy el bot de la FISI, ¿Ingresa tu código?')
+    bot.reply_to(message, 'Buenos Días, soy el bot de la FISI, ¿Ingresa tu código de alumno?')
 
 @bot.message_handler(func=lambda m: True)
 def echo_all(message):
