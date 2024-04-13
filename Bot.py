@@ -13,15 +13,29 @@ student_codes = {
 
 # Diccionario que mapea los códigos de los estudiantes a sus cursos y salones
 student_courses = {
-    "19200171": {
-        "Lunes": [("Curso 1", "Salón 101"), ("Curso 2", "Salón 102")],
-        "Martes": [("Curso 3", "Salón 201")],
-        # Agrega aquí todos los cursos y salones para cada día de la semana
+     "19200171": {
+        "Lunes": [("INTELIGENCIA ARTIFICIAL 3.0", "Salón 101", "8:00 AM", "10:00 AM"), ("INVESTIGACIÓN OPERATIVA", "Salón 102", "10:30 AM", "12:30 PM")],
+        "Martes": [("LENGUAJES Y COMPILADORES", "Salón 201", "9:00 AM", "11:00 AM")],
+        "Miércoles": [("INTERNET DE LAS COSAS 3.0", "Salón 202", "8:00 AM", "10:00 AM"), ("SISTEMAS OPERATIVOS", "Salón 203", "10:30 AM", "12:30 PM")],
+        "Jueves": [("REDES, TRANSMISIÓN Y AUTOMATIZACIÓN Y CONTROL", "Salón 204", "9:00 AM", "11:00 AM")],
+        "Viernes": [("PROGRAMACIÓN PARALELA 3.0", "Salón 205", "8:00 AM", "10:00 AM"), ("METODOLOGIA DE LA ELABORACIÓN DE TESIS", "Salón 206", "10:30 AM", "12:30 PM")],
+        "Sábado": [("SISTEMAS DISTRIBUIDOS 3.0", "Salón 207", "9:00 AM", "11:00 AM")]
     },
-    "19200171": {
-        "Lunes": [("Curso 4", "Salón 301"), ("Curso 5", "Salón 302")],
-        "Martes": [("Curso 6", "Salón 401")],
-        # Agrega aquí todos los cursos y salones para cada día de la semana
+    "20200218": {
+        "Lunes": [("INTELIGENCIA ARTIFICIAL 3.0", "Salón 101", "8:00 AM", "10:00 AM"), ("INVESTIGACIÓN OPERATIVA", "Salón 102", "10:30 AM", "12:30 PM")],
+        "Martes": [("LENGUAJES Y COMPILADORES", "Salón 201", "9:00 AM", "11:00 AM")],
+        "Miércoles": [("INTERNET DE LAS COSAS 3.0", "Salón 202", "8:00 AM", "10:00 AM"), ("SISTEMAS OPERATIVOS", "Salón 203", "10:30 AM", "12:30 PM")],
+        "Jueves": [("REDES, TRANSMISIÓN Y AUTOMATIZACIÓN Y CONTROL", "Salón 204", "9:00 AM", "11:00 AM")],
+        "Viernes": [("PROGRAMACIÓN PARALELA 3.0", "Salón 205", "8:00 AM", "10:00 AM"), ("METODOLOGIA DE LA ELABORACIÓN DE TESIS", "Salón 206", "10:30 AM", "12:30 PM")],
+        "Sábado": [("SISTEMAS DISTRIBUIDOS 3.0", "Salón 207", "9:00 AM", "11:00 AM")]
+    },
+    "19200186": { 
+        "Lunes": [("INTELIGENCIA ARTIFICIAL 3.0", "Salón 101", "8:00 AM", "10:00 AM"), ("INVESTIGACIÓN OPERATIVA", "Salón 102", "10:30 AM", "12:30 PM")],
+        "Martes": [("LENGUAJES Y COMPILADORES", "Salón 201", "9:00 AM", "11:00 AM")],
+        "Miércoles": [("INTERNET DE LAS COSAS 3.0", "Salón 202", "8:00 AM", "10:00 AM"), ("SISTEMAS OPERATIVOS", "Salón 203", "10:30 AM", "12:30 PM")],
+        "Jueves": [("REDES, TRANSMISIÓN Y AUTOMATIZACIÓN Y CONTROL", "Salón 204", "9:00 AM", "11:00 AM")],
+        "Viernes": [("PROGRAMACIÓN PARALELA 3.0", "Salón 205", "8:00 AM", "10:00 AM"), ("METODOLOGIA DE LA ELABORACIÓN DE TESIS", "Salón 206", "10:30 AM", "12:30 PM")],
+        "Sábado": [("SISTEMAS DISTRIBUIDOS 3.0", "Salón 207", "9:00 AM", "11:00 AM")]
     },
     # Agrega aquí todos los códigos y cursos de estudiantes que necesites
 }
@@ -49,7 +63,7 @@ def echo_all(message):
         bot.send_message(message.chat.id, f"Hola {student_codes[text]}, ¿Qué día necesitas?", reply_markup=markup)
     elif text in ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]:
         courses = student_courses[student_code][text]
-        reply = "\n".join([f"{course[0]} en {course[1]}" for course in courses])
+        reply = "\n".join([f"{course[0]} en {course[1]} de {course[2]} a {course[3]}" for course in courses])
         bot.reply_to(message, reply)
     else:
         bot.reply_to(message, f"Lo siento, ese código no está registrado.")
