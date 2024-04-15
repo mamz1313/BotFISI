@@ -48,9 +48,28 @@ def reclamo_callback(call):
 @bot.callback_query_handler(func=lambda call: call.data == "button2")
 def button2_callback(call):
     keyboard = types.InlineKeyboardMarkup()
+    local1 = types.InlineKeyboardButton(text="Tienda Miraflores", callback_data="local1")
+    local2 = types.InlineKeyboardButton(text="Tienda San Isidro", callback_data="local2")
+    local3 = types.InlineKeyboardButton(text="Tienda Barranco", callback_data="local3")
     back_button = types.InlineKeyboardButton(text="Retroceder", callback_data="back")
+    keyboard.add(local1)
+    keyboard.add(local2)
+    keyboard.add(local3)
     keyboard.add(back_button)
     bot.send_message(call.message.chat.id, "Estás en el flujo de Nuestros locales. ¿Qué te gustaría hacer?", reply_markup=keyboard)
+
+@bot.callback_query_handler(func=lambda call: call.data in ["local1", "local2", "local3"])
+def local_callback(call):
+    keyboard = types.InlineKeyboardMarkup()
+    back_button = types.InlineKeyboardButton(text="Retroceder", callback_data="back")
+    keyboard.add(back_button)
+    if call.data == "local1":
+        bot.send_message(call.message.chat.id, "Has seleccionado Tienda Miraflores - Avenida Larco 123", reply_markup=keyboard)
+    elif call.data == "local2":
+        bot.send_message(call.message.chat.id, "Has seleccionado Tienda San Isidro - Calle Los Pinos 456", reply_markup=keyboard)
+    elif call.data == "local3":
+        bot.send_message(call.message.chat.id, "Has seleccionado Tienda Barranco - Jirón Sáenz Peña 789", reply_markup=keyboard)
+
 
 @bot.callback_query_handler(func=lambda call: call.data == "button3")
 def button3_callback(call):
